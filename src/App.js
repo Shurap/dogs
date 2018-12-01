@@ -1,3 +1,24 @@
+import React from 'react';
+import Header from './Header';
+import Main from './Main';
+
+const App = () => (
+  <div>
+    <Header/>
+    <Main/>
+
+  </div>
+)
+
+export default App;
+
+
+
+
+
+
+
+/*
 import React, {Component} from 'react';
 
 class App extends Component {
@@ -11,7 +32,7 @@ class App extends Component {
 }
 
 export default App;
-
+*/
 /*
 function write (a){
   console.log(a);

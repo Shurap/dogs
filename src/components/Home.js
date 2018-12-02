@@ -2,6 +2,14 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {addListDogs} from "../actions/homeActions";
+import Breed from './Breed'
+
+const divStyle ={
+  display: 'flex',
+  flexDirection: 'column',
+  backgroundColor: 'gray',
+  width: '200px'
+}
 
 class Home extends Component {
 
@@ -17,13 +25,28 @@ class Home extends Component {
     console.log(await this.readInfo('https://dog.ceo/api/breeds/list/all'));
   }
 
-  render() {
-    console.log('1', this.props);
-    return (
-      <div>
-        <h1>Me page about dogs</h1>
+  handleClickButton = (name) => {
+    console.log(name);
+    //for (let prop in this.props.dogList) {
+    //  if (this.props.dogList.prop !== '') console.log(this.props.dogList.prop);
+    //}
 
-        {/*<button onClick={() => props.addDog({name : 'avcharka'})}>Нажать</button>*/}
+
+
+    //const element = (this.props.dogList).filter((elem) => elem === name);
+
+    //const element = Object.keys(this.props.dogList).filter((elem) => elem === name);
+    //console.log('element - ', element);
+  }
+
+  render() {
+    return (
+      <div style = {divStyle}>
+        <h1>My page about dogs</h1>
+        {Object.keys(this.props.dogList ? this.props.dogList : {}).map((elem) => <Breed
+          name = {elem}
+          handleClick = {this.handleClickButton}
+        />)}
       </div>
     );
   }
@@ -33,4 +56,6 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({addListDogs}, dispa
 const mapStateToProps = (state) => ({dogList : state.home.dogList});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
+
+{/*<button onClick={() => props.addDog({name : 'avcharka'})}>Нажать</button>*/}
 

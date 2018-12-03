@@ -4,13 +4,13 @@ import {Route} from 'react-router-dom';
 import Home from './Home';
 import Dog from './Dog'
 
-const Main = () => (
+const Router = () => (
   <main>
     <Switch>
       <Route exact path='/' component={Home}/>
-      <Route path='/dog' component={Dog}/>
+      <Route path='/dog/:breed/:subBreed?' component={Dog}/>
     </Switch>
   </main>
 )
 
-export default Main;
+export default Router;

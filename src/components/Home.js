@@ -17,35 +17,21 @@ class Home extends Component {
     const result = await fetch(url);
     const arr = await result.json();
     this.props.addListDogs(arr.message);
-
     return arr;
   }
 
   async componentDidMount() {
-    console.log(await this.readInfo('https://dog.ceo/api/breeds/list/all'));
-  }
-
-  handleClickButton = (name) => {
-    console.log(name);
-    //for (let prop in this.props.dogList) {
-    //  if (this.props.dogList.prop !== '') console.log(this.props.dogList.prop);
-    //}
-
-
-
-    //const element = (this.props.dogList).filter((elem) => elem === name);
-
-    //const element = Object.keys(this.props.dogList).filter((elem) => elem === name);
-    //console.log('element - ', element);
+    await this.readInfo('https://dog.ceo/api/breeds/list/all');
   }
 
   render() {
     return (
       <div style = {divStyle}>
-        <h1>My page about dogs</h1>
+        <h1>Page about dogs</h1>
         {Object.keys(this.props.dogList ? this.props.dogList : {}).map((elem) => <Breed
+          key = {elem}
           name = {elem}
-          handleClick = {this.handleClickButton}
+          subBreeds = {this.props.dogList[elem]}
         />)}
       </div>
     );

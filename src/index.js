@@ -13,20 +13,3 @@ ReactDOM.render(
       </BrowserRouter>
     </Provider>
   ), document.getElementById('root'));
-
-
-/*
-import write from './App.js';
-
-write('проверка');
-
-async function readInfo(url) {
-  const result = await fetch(url);
-  const arr = await result.json();
-  console.log(arr);
-}
-
-readInfo('https://dog.ceo/api/breeds/list/all');
-
-
-*/

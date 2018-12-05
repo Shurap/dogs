@@ -1,26 +1,39 @@
 import React, {Component} from 'react';
+import {addDog} from "../actions/homeActions";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 
 class Dog extends Component {
 
   readInfo = async(url) => {
     const result = await fetch(url);
-    const arr = await result.json();
-    return arr;
+    const response = await result.json();
+    this.props.addDog(response.message);
+    return response;
   }
 
   async componentDidMount() {
-    await this.readInfo('https://dog.ceo/api/breeds/list/all');
+    const params = this.props.match.params;
+    const addressDog = (params.subBreed) ?
+      `https://dog.ceo/api/breed/${params.breed}/${params.subBreed}/images/random` :
+      `https://dog.ceo/api/breed/${params.breed}/images/random`;
+    await this.readInfo(addressDog);
   }
 
 
 
   render() {
-    console.log(props);
+    console.log('see here ', this.props);
     return (
       <div>
         <h1>Page about one dog!</h1>
+        <img src = {this.props.dogImageUrl}/>
       </div>
     );
   }
 }
-export default Dog;
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({addDog}, dispatch);
+const mapStateToProps = (state) => ({dogImageUrl : state.home.dogImageUrl});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dog);

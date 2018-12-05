@@ -43,5 +43,3 @@ const mapStateToProps = (state) => ({dogList : state.home.dogList});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
-{/*<button onClick={() => props.addDog({name : 'avcharka'})}>Нажать</button>*/}
-

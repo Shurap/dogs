@@ -4,13 +4,6 @@ import {bindActionCreators} from "redux";
 import {addListDogs} from "../actions/homeActions";
 import Breed from './Breed'
 
-const divStyle ={
-  display: 'flex',
-  flexDirection: 'column',
-  backgroundColor: 'gray',
-  width: '200px'
-}
-
 class Home extends Component {
 
   readInfo = async(url) => {
@@ -26,7 +19,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div style = {divStyle}>
+      <div>
         <h1>Page about dogs</h1>
         {Object.keys(this.props.dogList ? this.props.dogList : {}).map((elem) => <Breed
           key = {elem}

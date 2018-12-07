@@ -16,7 +16,8 @@ module.exports = {
   ],
   devServer: {
     publicPath: "/dist/",
-    contentBase: path.resolve(__dirname, 'src')
+    contentBase: path.resolve(__dirname, 'src'),
+    historyApiFallback: true
   },
   module: {
     rules: [

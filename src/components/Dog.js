@@ -3,6 +3,12 @@ import {addDog} from "../actions/homeActions";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 
+const styleImg = {
+  margin: '20px',
+  boxShadow: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)',
+  borderRadius: '3px',
+}
+
 class Dog extends Component {
 
   readInfo = async(url) => {
@@ -27,7 +33,7 @@ class Dog extends Component {
     return (
       <div>
         <h1>Page about one dog!</h1>
-        <img src = {this.props.dogImageUrl}/>
+        <img src = {this.props.dogImageUrl} style={styleImg}/>
       </div>
     );
   }

@@ -19,11 +19,16 @@ class Dog extends Component {
   }
 
   async componentDidMount() {
-    const params = this.props.match.params;
-    const addressDog = (params.subBreed) ?
-      `https://dog.ceo/api/breed/${params.breed}/${params.subBreed}/images/random` :
-      `https://dog.ceo/api/breed/${params.breed}/images/random`;
-    await this.readInfo(addressDog);
+    try {
+      const params = this.props.match.params;
+      const addressDog = (params.subBreed) ?
+        `https://dog.ceo/api/breed/${params.breed}/${params.subBreed}/images/random` :
+        `https://dog.ceo/api/breed/${params.breed}/images/random`;
+      await this.readInfo(addressDog);
+    }
+    catch (error) {
+      console.log('------error', error);
+    }
   }
 
 

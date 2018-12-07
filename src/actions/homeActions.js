@@ -1,10 +1,10 @@
 import {ADD_LIST_DOGS} from '../constants/homeConstants'
 import {ADD_ONE_DOG} from '../constants/homeConstants'
 
-export function addListDogs(listDogs){
+export function addListDogs(dogList){
   return {
     type : ADD_LIST_DOGS,
-    listDogs
+    dogList
   }
 }
 

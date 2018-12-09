@@ -19,25 +19,21 @@ class Dog extends Component {
   }
 
   async componentDidMount() {
-    try {
       const params = this.props.match.params;
       const addressDog = (params.subBreed) ?
         `https://dog.ceo/api/breed/${params.breed}/${params.subBreed}/images/random` :
         `https://dog.ceo/api/breed/${params.breed}/images/random`;
       await this.readInfo(addressDog);
-    }
-    catch (error) {
-      console.log('------error', error);
-    }
   }
 
-
-
   render() {
-    console.log('see here ', this.props);
     return (
       <div>
         <h1>Page about one dog!</h1>
+        <button onClick={() => window.location.reload()} style={{margin: '5px'}}>Next random image</button>
+        <button onClick={() => window.history.back()}>List of dogs</button>
+        <h2>Breed: {this.props.match.params.breed}</h2>
+        <h2>{(this.props.match.params.subBreed) ? `Subbreed: ${this.props.match.params.subBreed}` : ''}</h2>
         <img src = {this.props.dogImageUrl} style={styleImg}/>
       </div>
     );

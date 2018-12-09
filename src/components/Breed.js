@@ -31,7 +31,7 @@ const Breed = (props) => {
       </div>
         {
           props.subBreeds.map((elem) =>
-            <div style={styleSubBreed}key={elem}>
+            <div style={styleSubBreed} key={elem}>
               <Link to={`/dog/${props.name}/${elem}`}>{elem}</Link>
             </div>)
         }

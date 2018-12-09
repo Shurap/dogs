@@ -20,7 +20,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <h1>Page about dogs</h1>
+        <h1>List of dogs</h1>
         {Object.keys(this.props.dogList ? this.props.dogList : {}).map((elem) => <Breed
           key = {elem}
           name = {elem}
